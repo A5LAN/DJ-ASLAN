@@ -55,65 +55,67 @@
     </p>
   </footer>
 
-  <!-- Scroll animation -->
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      gsap.registerPlugin(ScrollTrigger);
+  <!-- Scroll Animation -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    gsap.registerPlugin(ScrollTrigger);
 
-      gsap.utils.toArray("section").forEach(section => {
-        gsap.from(section, {
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-            toggleActions: "play none none none"
-          },
-          opacity: 0,
-          y: 50,
-          duration: 1,
-          ease: "power3.out"
-        });
+    gsap.utils.toArray("section").forEach(section => {
+      gsap.from(section, {
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+          toggleActions: "play none none none"
+        },
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        ease: "power3.out"
       });
     });
-  </script>
+  });
+</script>
 
-  <!-- Hero slider animation -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const slides = gsap.utils.toArray(".slide");
-      let current = 0;
+<!-- Hero Slider Animation -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slides = gsap.utils.toArray(".slide");
+    let currentSlideIndex = 0;
 
-      function showSlide(index) {
-        const prev = slides[(index - 1 + slides.length) % slides.length];
-        const next = slides[index];
+    // Set initial state for all slides
+    slides.forEach(slide => gsap.set(slide, { x: "100%", opacity: 0 }));
+    gsap.set(slides[0], { x: "0%", opacity: 1 });
 
-        gsap.to(prev, {
-          x: "-100%",
-          opacity: 0,
-          duration: 0.5,
-          ease: "power1.inOut"
-        });
+    function showSlide(index) {
+      const previous = slides[(index - 1 + slides.length) % slides.length];
+      const current = slides[index];
 
-        gsap.fromTo(next, 
-          { x: "100%", opacity: 0 }, 
-          {
-            x: "0%",
-            opacity: 1,
-            duration: 1.2,
-            ease: "power2.inOut",
-          }
-        );
-      }
+      gsap.to(previous, {
+        x: "-100%",
+        opacity: 0,
+        duration: 0.5,
+        ease: "power1.inOut"
+      });
 
-      function nextSlide() {
-        current = (current + 1) % slides.length;
-        showSlide(current);
-      }
+      gsap.fromTo(current,
+        { x: "100%", opacity: 0 },
+        {
+          x: "0%",
+          opacity: 1,
+          duration: 1.2,
+          ease: "power2.inOut"
+        }
+      );
+    }
 
-      slides.forEach(slide => gsap.set(slide, { x: "100%", opacity: 0 }));
-      gsap.set(slides[0], { x: "0%", opacity: 1 });
+    function advanceSlide() {
+      currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+      showSlide(currentSlideIndex);
+    }
 
-      setInterval(nextSlide, 4000); // every 4 seconds
-    });
-  </script>
+    // Automatically switch slides every 4 seconds
+    setInterval(advanceSlide, 4000);
+  });
+</script>
 </body>
 </html>
