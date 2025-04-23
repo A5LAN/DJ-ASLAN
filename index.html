@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chipie Design</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #111;
+      --accent-color: #ccc;
+      --font-main: 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-main);
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 2rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 8vw, 6rem);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.875rem;
+      opacity: 0.6;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      50% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+    }
+
+    section {
+      padding: 6rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 4rem 0;
+    }
+
+    .project {
+      background: #f5f5f5;
+      padding: 2rem;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-10px);
+    }
+
+    footer {
+      padding: 4rem 2rem;
+      text-align: center;
+      font-size: 0.875rem;
+      color: #666;
+    }
+
+    a {
+      color: var(--text-color);
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1 id="hero-text">DJ ASLAN</h1>
+      <div class="scroll-indicator"><a href="#about">Scroll ↓</a></div>
+    </div>
+  </header>
+
+  <section id="about">
+    <p>lorem ipsum etc etc</p>
+  </section>
+
+  <section id="projects">
+    <h2>Featured Projects</h2>
+    <div class="projects">
+      <div class="project">Project One</div>
+      <div class="project">Project Two</div>
+      <div class="project">Project Three</div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Okan Dodanli. All rights reserved.</p>
+    <p>
+      <a href="#">Instagram</a> | <a href="#">LinkedIn</a> | <a href="#">Contact</a>
+    </p>
+  </footer>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.from("#hero-text", {
+        opacity: 0,
+        y: 50,
+        duration: 1.5,
+        ease: "power4.out"
+      });
+
+      gsap.utils.toArray("section").forEach(section => {
+        gsap.from(section, {
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%",
+            toggleActions: "play none none none"
+          },
+          opacity: 0,
+          y: 50,
+          duration: 1,
+          ease: "power3.out"
+        });
+      });
+    });
+  </script>
+</body>
+</html>
