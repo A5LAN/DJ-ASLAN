@@ -37,15 +37,12 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 4rem;
-  background: #f9f9f9;
   position: relative;
   z-index: 1;
   padding-bottom: 2rem;
 }
 
 .hero-content {
-  max-width: 500px;
   height: 75%;
   display: flex;
   flex-direction: column;
@@ -69,6 +66,7 @@ body {
 }
 
 .hero-left-bottom {
+  padding-left: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -90,9 +88,10 @@ body {
 }
 
 .hero-content p {
-  font-size: 1.2rem;
+  font-size: 1rem;
+  font-weight:400;
   margin: 0;
-  margin-right: 2rem;
+  margin-right: 20rem;
 }
 
 .chipie-button {
@@ -176,7 +175,7 @@ body {
   font-size: 0.875rem;
   opacity: 0.6;
   animation: bounce 2s infinite;
-  color: #333;
+  color: #111;
 }
 
 .scroll-indicator a {
@@ -215,7 +214,6 @@ section, .section {
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
-  background: #f1f1f1;
 }
 
 .section h2 {
