@@ -89,21 +89,6 @@ body {
   margin: 0;
 }
 
-.chipie-button {
-  background-color: #111;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  text-decoration: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-.chipie-button:hover {
-  background-color: #333;
-}
-
 .hero-right {
   flex: 1;
   width: 50%;
@@ -260,9 +245,12 @@ a:hover {
   border-radius: 50px;
   letter-spacing: 0.05em;
   transition: all 0.3s ease-in-out;
+  opacity: 1;  /* Explicitly set opacity to 1 to ensure it is visible */
 }
 
 .book-button:hover {
   background-color: #f5f;
   color: #111;
+  opacity: 1; /* Ensure opacity is 1 on hover as well */
 }
+
