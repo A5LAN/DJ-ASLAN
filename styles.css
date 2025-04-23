@@ -55,7 +55,6 @@ body {
 
 .hero-left-top {
   margin-bottom: 2rem;
-  animation: slideInLeft 1s ease forwards;
   opacity: 0;
 }
 
@@ -70,9 +69,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  animation: slideInLeft 1.5s ease forwards;
-  opacity: 0;
-  animation-delay: 0.5s;
 }
 
 .hero-left-bottom p {
@@ -150,17 +146,6 @@ body {
   object-fit: contain;
   object-position: center;
   display: block;
-}
-
-@keyframes slideInLeft {
-  from {
-    transform: translateX(-50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
 }
 
 .scroll-indicator {
