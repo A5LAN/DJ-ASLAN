@@ -115,28 +115,35 @@
     const paragraph = document.querySelector('.hero-left-bottom p');
     const bookButton = document.querySelector('.book-button');
 
-    gsap.from(h1, {
-      x: -100,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out",
-      delay: 0.2
-    });
+    // Ensure elements exist before animating
+    if (h1) {
+      gsap.from(h1, {
+        x: -100,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+        delay: 0.2
+      });
+    }
 
-    gsap.from(paragraph, {
-      opacity: 0,
-      duration: 1,
-      ease: "power2.out",
-      delay: 0.8
-    });
+    if (paragraph) {
+      gsap.from(paragraph, {
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+        delay: 0.8
+      });
+    }
 
-    gsap.from(bookButton, {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      ease: "back.out(1.7)",
-      delay: 1.2
-    });
+    if (bookButton) {
+      gsap.from(bookButton, {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        ease: "back.out(1.7)",
+        delay: 1.2
+      });
+    }
   });
 </script>
 </body>
