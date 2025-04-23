@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DJ ASLAN | Proffesional DJ Services | Toronto, ON, CA</title>
+  <title>DJ ASLAN | Professional DJ Services | Toronto, ON, CA</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
@@ -11,27 +11,31 @@
 </head>
 <body>
   <div class="hero-container">
-  <div class="hero-left">
-    <div class="hero-content">
-      <h1>DJ ASLAN</h1>
-      <p>A professional DJ for special events and restaurants who is ready to cater to an unforgettable experience.</p>
-      <a href="#" class="chipie-button">Book Now</a>
+    <div class="hero-left">
+      <div class="hero-content">
+        <div class="hero-left-top">
+          <h1>DJ ASLAN</h1>
+        </div>
+        <div class="hero-left-bottom">
+          <p>A professional DJ for special events and restaurants who is ready to cater to an unforgettable experience.</p>
+          <a href="#" class="chipie-button">Book Now</a>
+        </div>
+      </div>
     </div>
-    <div class="hero-bottom"></div>
-  </div>
-  <div class="hero-right">
-    <div class="slider">
-      <div class="slide-track">
-        <img src="https://via.placeholder.com/600x400?text=Slide+1" class="slide" />
-        <img src="https://via.placeholder.com/600x400?text=Slide+2" class="slide" />
-        <img src="https://via.placeholder.com/600x400?text=Slide+3" class="slide" />
-        <img src="https://via.placeholder.com/600x400?text=Slide+1" class="slide" /> <!-- repeated for infinite effect -->
+    <div class="hero-right">
+      <div class="slider">
+        <div class="slide-track">
+          <img src="https://via.placeholder.com/600x400?text=Slide+1" class="slide" />
+          <img src="https://via.placeholder.com/600x400?text=Slide+2" class="slide" />
+          <img src="https://via.placeholder.com/600x400?text=Slide+3" class="slide" />
+          <img src="https://via.placeholder.com/600x400?text=Slide+1" class="slide" />
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="scroll-indicator"><a href="#projects">Scroll ↓</a></div>
-</div>
+
+  <div class="scroll-indicator"><a href="#projects">Scroll ↓</a></div>
+
   <section id="projects">
     <h2>Featured Projects</h2>
     <div class="projects">
@@ -42,10 +46,10 @@
   </section>
 
   <footer>
-<p style="max-width: 700px; margin: 0 auto 2rem auto; font-size: 1rem; color: #333;">
+    <p style="max-width: 700px; margin: 0 auto 2rem auto; font-size: 1rem; color: #333;">
       A professional DJ for special events and restaurants who is ready to cater an unforgettable experience.
     </p>
-    <p>&copy; 2025 Chipie Design. All rights reserved.</p>
+    <p>&copy; 2025 Okan Dodanli. All rights reserved.</p>
     <p>
       <a href="#">Instagram</a> | <a href="#">LinkedIn</a> | <a href="#">Contact</a>
     </p>
@@ -54,13 +58,6 @@
   <script>
     window.addEventListener('DOMContentLoaded', () => {
       gsap.registerPlugin(ScrollTrigger);
-
-      gsap.from("#hero-text", {
-        opacity: 0,
-        x: -100,
-        duration: 1.5,
-        ease: "power4.out"
-      });
 
       gsap.utils.toArray("section").forEach(section => {
         gsap.from(section, {
