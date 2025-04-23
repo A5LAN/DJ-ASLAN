@@ -74,13 +74,13 @@ body {
 }
 
 .hero-right {
-  width: 50%;
+  width: 53%;
   overflow: hidden;
   position: relative;
 }
 
 .slider {
-  height: 90%;
+  height:89%;
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -88,7 +88,7 @@ body {
 
 .slide-track {
   display: flex;
-  width: calc(200%);
+  width: calc(200%); /* Adjust based on the number of slides */
   animation: scroll 9s linear infinite;
 }
 
