@@ -8,44 +8,6 @@
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
-
-  <style>
-    .slider {
-      width: 100%;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .slide-track {
-      display: flex;
-      width: calc(200%);
-      animation: scroll 18s linear infinite;
-    }
-
-    .slide {
-      width: 100%;
-      flex-shrink: 0;
-    }
-
-    .slide img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    @keyframes scroll {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
-    }
-
-    .slider:hover .slide-track {
-      animation-play-state: paused;
-    }
-  </style>
 </head>
 <body>
   <div class="hero-container">
