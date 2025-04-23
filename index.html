@@ -1,13 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DJ ASLAN | Professional DJ Services | Toronto, ON, CA</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+
+  <style>
+    .slider {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide-track {
+      display: flex;
+      width: calc(200%);
+      animation: scroll 18s linear infinite;
+    }
+
+    .slide {
+      width: 100%;
+      flex-shrink: 0;
+    }
+
+    .slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .slider:hover .slide-track {
+      animation-play-state: paused;
+    }
+  </style>
 </head>
 <body>
   <div class="hero-container">
@@ -22,13 +60,21 @@
         </div>
       </div>
     </div>
+
     <div class="hero-right">
       <div class="slider">
         <div class="slide-track">
-          <img src="images/djing-blur.JPG" class="slide" />
-          <img src="images/djing-blur2.JPG" class="slide" />
-          <img src="https://drive.google.com/file/d/18c-0SUSNf-XDpg1dujX6ud_FLHVsipdR" class="slide" />
-          <img src="https://drive.google.com/file/d/11OQjsotDrksNMvhRKz_ySiUdFSYk4TQa" class="slide" />
+          <!-- Original Set -->
+          <div class="slide"><img src="images/djing-blur.JPG" /></div>
+          <div class="slide"><img src="images/djing-blur2.JPG" /></div>
+          <div class="slide"><img src="https://drive.google.com/uc?id=18c-0SUSNf-XDpg1dujX6ud_FLHVsipdR" /></div>
+          <div class="slide"><img src="https://drive.google.com/uc?id=11OQjsotDrksNMvhRKz_ySiUdFSYk4TQa" /></div>
+
+          <!-- Duplicate Set for Looping -->
+          <div class="slide"><img src="images/djing-blur.JPG" /></div>
+          <div class="slide"><img src="images/djing-blur2.JPG" /></div>
+          <div class="slide"><img src="https://drive.google.com/uc?id=18c-0SUSNf-XDpg1dujX6ud_FLHVsipdR" /></div>
+          <div class="slide"><img src="https://drive.google.com/uc?id=11OQjsotDrksNMvhRKz_ySiUdFSYk4TQa" /></div>
         </div>
       </div>
     </div>
