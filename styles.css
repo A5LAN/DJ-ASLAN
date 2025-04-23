@@ -85,7 +85,7 @@ body {
 .hero-content p {
   font-size: 1rem;
   font-weight:400;
-  max-width: 500px;
+  max-width: 350px;
   margin: 0;
 }
 
@@ -253,4 +253,3 @@ a:hover {
   color: #111;
   opacity: 1; /* Ensure opacity is 1 on hover as well */
 }
-
