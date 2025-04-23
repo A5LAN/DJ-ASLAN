@@ -80,7 +80,7 @@ body {
 }
 
 .slider {
-  height:90%;
+  height: 90%;
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -88,7 +88,7 @@ body {
 
 .slide-track {
   display: flex;
-  width: calc(200%); /* Adjust based on the number of slides */
+  width: calc(200%);
   animation: scroll 9s linear infinite;
 }
 
