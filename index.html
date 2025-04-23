@@ -55,11 +55,11 @@
     </p>
   </footer>
 
-  <!-- Scroll Animation -->
 <script>
-  window.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(ScrollTrigger);
 
+    // Scroll Animation for all sections
     gsap.utils.toArray("section").forEach(section => {
       gsap.from(section, {
         scrollTrigger: {
@@ -73,16 +73,11 @@
         ease: "power3.out"
       });
     });
-  });
-</script>
 
-<!-- Hero Slider Animation -->
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
+    // Hero Slider Animation
     const slides = gsap.utils.toArray(".slide");
     let currentSlideIndex = 0;
 
-    // Set initial state for all slides
     slides.forEach(slide => gsap.set(slide, { x: "100%", opacity: 0 }));
     gsap.set(slides[0], { x: "0%", opacity: 1 });
 
@@ -113,8 +108,35 @@
       showSlide(currentSlideIndex);
     }
 
-    // Automatically switch slides every 4 seconds
     setInterval(advanceSlide, 4000);
+
+    // Hero Content Animation (h1, paragraph, and button)
+    const h1 = document.querySelector('.hero-left-top h1');
+    const paragraph = document.querySelector('.hero-left-bottom p');
+    const bookButton = document.querySelector('.book-button');
+
+    gsap.from(h1, {
+      x: -100,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out",
+      delay: 0.2
+    });
+
+    gsap.from(paragraph, {
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out",
+      delay: 0.8
+    });
+
+    gsap.from(bookButton, {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: "back.out(1.7)",
+      delay: 1.2
+    });
   });
 </script>
 </body>
