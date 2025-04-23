@@ -86,8 +86,8 @@ body {
 .hero-content p {
   font-size: 1rem;
   font-weight:400;
+  max-width: 500px;
   margin: 0;
-  margin-right: 20rem;
 }
 
 .chipie-button {
