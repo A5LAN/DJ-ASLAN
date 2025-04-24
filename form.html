@@ -111,11 +111,27 @@
     <label for="phone">Your Phone Number</label>
     <div>
       <select name="countryCode" id="countryCode" required>
+        <!-- Country code options ordered as per request -->
+        <option value="+1">Canada (+1)</option>
+        <option value="+52">Mexico (+52)</option>
         <option value="+1">United States (+1)</option>
         <option value="+44">United Kingdom (+44)</option>
         <option value="+33">France (+33)</option>
-        <option value="+90">Turkey (+90)</option>
-        <!-- Add more countries as needed -->
+        <option value="+49">Germany (+49)</option>
+        <option value="+39">Italy (+39)</option>
+        <option value="+81">Japan (+81)</option>
+        <option value="+86">China (+86)</option>
+        <option value="+61">Australia (+61)</option>
+        <option value="+234">Nigeria (+234)</option>
+        <option value="+47">Norway (+47)</option>
+        <option value="+34">Spain (+34)</option>
+        <option value="+233">Ghana (+233)</option>
+        <option value="+66">Thailand (+66)</option>
+        <option value="+7">Russia (+7)</option>
+        <option value="+27">South Africa (+27)</option>
+        <option value="+55">Brazil (+55)</option>
+        <option value="+30">Greece (+30)</option>
+        <!-- Add more countries here as needed -->
       </select>
       <input type="tel" name="phone" id="phone" placeholder="Enter phone number" required>
     </div>
@@ -148,24 +164,47 @@
         return false;
       }
 
-      if (countryCode === "+1" && phoneValue.length !== 10) {
-        alert('For the United States, please enter 10 digits.');
-        return false;
-      }
-
-      if (countryCode === "+44" && phoneValue.length !== 10) {
-        alert('For the United Kingdom, please enter 10 digits.');
-        return false;
-      }
-
-      if (countryCode === "+33" && phoneValue.length !== 9) {
-        alert('For France, please enter 9 digits.');
-        return false;
-      }
-
-      if (countryCode === "+90" && phoneValue.length !== 10) {
-        alert('For Turkey, please enter 10 digits.');
-        return false;
+      // Add length validation for different countries here
+      switch (countryCode) {
+        case "+1":
+          if (phoneValue.length !== 10) {
+            alert('For Canada (and the United States), please enter 10 digits.');
+            return false;
+          }
+          break;
+        case "+44":
+          if (phoneValue.length !== 10) {
+            alert('For the United Kingdom, please enter 10 digits.');
+            return false;
+          }
+          break;
+        case "+33":
+          if (phoneValue.length !== 9) {
+            alert('For France, please enter 9 digits.');
+            return false;
+          }
+          break;
+        case "+90":
+          if (phoneValue.length !== 10) {
+            alert('For Turkey, please enter 10 digits.');
+            return false;
+          }
+          break;
+        case "+61":
+          if (phoneValue.length !== 9) {
+            alert('For Australia, please enter 9 digits.');
+            return false;
+          }
+          break;
+        case "+49":
+          if (phoneValue.length !== 11) {
+            alert('For Germany, please enter 11 digits.');
+            return false;
+          }
+          break;
+        // Continue adding cases for more countries as needed
+        default:
+          break;
       }
 
       return true;
