@@ -16,6 +16,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Mobile menu toggle logic
+const menuToggle = document.getElementById('menuToggle');
+const mobileNav = document.getElementById('mobileNav');
+
+if (menuToggle && mobileNav) {
+  menuToggle.addEventListener('click', () => {
+    mobileNav.classList.toggle('active');
+  });
+}
+
   // Hero Slider Animation
   const slides = gsap.utils.toArray(".slide");
   let currentSlideIndex = 0;
