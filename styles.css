@@ -5,17 +5,15 @@
   --font-main: 'Inter', sans-serif;
 }
 
-/* === General Styles === */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
-  transition: all 0.25s ease-in-out; /* Smooth transitions for all elements */
 }
 
 body {
-  background: linear-gradient(to bottom, #ffffff 0%, #f8f8f8 100%);
+  background-color: var(--bg-color);
   color: var(--text-color);
   font-family: var(--font-main);
   font-weight: 300;
@@ -23,57 +21,34 @@ body {
   overflow-x: hidden;
 }
 
-/* === Typography === */
-h1, h2, h3 {
-  color: var(--text-color);
-  font-weight: 600;
+/* Logo fade-in animation for mobile */
+.logo {
+  opacity: 0; /* Initial state of the logo */
+  transition: opacity 1s ease-in-out; /* Smooth transition for opacity */
 }
 
-.hero-content h1 {
-  font-size: clamp(2rem, 6vw, 4rem);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  animation: fadeUp 1s ease-out;
-}
-
-.hero-content p {
-  font-size: 1rem;
-  font-weight: 400;
-  max-width: 350px;
-  margin: 0;
-}
-
-@keyframes fadeUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
+@media screen and (max-width: 768px) {
+  .logo {
+    animation: fadeIn 1s ease-out forwards; /* Apply the fade-in animation on mobile */
   }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 }
 
-/* === Scrollbar Customization === */
-::-webkit-scrollbar {
-  width: 10px;
+/* For larger screens (PC and tablets), no animation */
+@media screen and (min-width: 769px) {
+  .logo {
+    opacity: 1; /* Ensure the logo is visible without animation */
+  }
 }
 
-::-webkit-scrollbar-track {
-  background: #f0f0f0;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #aaa;
-}
-
-/* === Hero Section === */
 .hero-container {
   display: flex;
   flex-direction: row;
@@ -128,7 +103,27 @@ h1, h2, h3 {
   margin-bottom: 2rem;
 }
 
-/* === Hero Slider === */
+.hero-content h1 {
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.hero-content p {
+  font-size: 1rem;
+  font-weight: 400;
+  max-width: 350px;
+  margin: 0;
+}
+
+.hero-right {
+  flex: 1;
+  width: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
 .slider {
   height: 100%;
   width: 100%;
@@ -190,7 +185,35 @@ h1, h2, h3 {
   }
 }
 
-/* === Projects Section === */
+@keyframes slideShow {
+  0% { transform: translateX(100%); }
+  10% { transform: translateX(0); }
+  40% { transform: translateX(0); }
+  50% { transform: translateX(-100%); }
+  60% { transform: translateX(-100%); }
+  100% { transform: translateX(-200%); }
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  40% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+section, .section {
+  padding: 6rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+}
+
 .projects {
   display: flex;
   gap: 2rem;
@@ -210,32 +233,8 @@ h1, h2, h3 {
 
 .project:hover {
   transform: translateY(-10px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  background-color: #fdfdfd;
 }
 
-/* === Button Styles === */
-.book-button {
-  display: inline-block;
-  width: fit-content;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  color: #f5f;
-  background-color: #111;
-  border: 1px solid #fff;
-  border-radius: 50px;
-  letter-spacing: 0.05em;
-  transition: all 0.3s ease-in-out;
-}
-
-.book-button:hover {
-  background-color: #f5f;
-  color: #111;
-}
-
-/* === Footer === */
 footer {
   text-align: center;
   padding: 3rem 2rem;
@@ -250,24 +249,40 @@ footer a {
   margin: 0 0.5rem;
 }
 
-/* === Responsive Typography === */
-html {
-  font-size: 16px;
+a {
+  color: var(--text-color);
+  text-decoration: none;
+  margin: 0 0.5rem;
 }
 
-@media (max-width: 1200px) {
-  html {
-    font-size: 15px;
-  }
+a:hover {
+  opacity: 1;
+  font-weight: 600;
 }
 
-@media (max-width: 768px) {
-  html {
-    font-size: 14px;
-  }
+.book-button {
+  display: inline-block;
+  width: fit-content;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #f5f;
+  background-color: #111;
+  border: 1px solid #fff;
+  border-radius: 50px;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease-in-out;
+  opacity: 1;
 }
 
-/* === Hero Mobile Adjustments === */
+.book-button:hover {
+  background-color: #f5f;
+  color: #111;
+  opacity: 1;
+}
+
+/* Mobile Responsiveness */
 @media screen and (max-width: 768px) {
   .hero-container {
     flex-direction: column;
