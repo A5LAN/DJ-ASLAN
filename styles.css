@@ -21,6 +21,57 @@ body {
   overflow-x: hidden;
 }
 
+/* Mobile Header */
+.mobile-header {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  border-bottom: 1px solid #eee;
+}
+.mobile-logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.mobile-menu-toggle {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.mobile-menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: #111;
+  display: block;
+}
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.mobile-nav.active {
+  display: flex;
+}
+.mobile-nav a {
+  padding: 0.75rem;
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
+}
+
 .hero-container {
   display: flex;
   flex-direction: row;
@@ -84,7 +135,7 @@ body {
 
 .hero-content p {
   font-size: 1rem;
-  font-weight:400;
+  font-weight: 400;
   max-width: 350px;
   margin: 0;
 }
@@ -155,23 +206,6 @@ body {
   50% {
     transform: translateX(-50%) translateY(-10px);
   }
-}
-
-@keyframes slideShow {
-  0% { transform: translateX(100%); }
-  10% { transform: translateX(0); }
-  40% { transform: translateX(0); }
-  50% { transform: translateX(-100%); }
-  60% { transform: translateX(-100%); }
-  100% { transform: translateX(-200%); }
-}
-
-@keyframes fadeInOut {
-  0% { opacity: 0; }
-  10% { opacity: 1; }
-  40% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 0; }
 }
 
 section, .section {
@@ -245,11 +279,42 @@ a:hover {
   border-radius: 50px;
   letter-spacing: 0.05em;
   transition: all 0.3s ease-in-out;
-  opacity: 1;  /* Explicitly set opacity to 1 to ensure it is visible */
+  opacity: 1;
 }
 
 .book-button:hover {
   background-color: #f5f;
   color: #111;
-  opacity: 1; /* Ensure opacity is 1 on hover as well */
+  opacity: 1;
+}
+
+/* Responsive Mobile Styling */
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .hero-left,
+  .hero-right {
+    width: 100%;
+    padding: 2rem;
+  }
+
+  .hero-content {
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .hero-left-top h1 {
+    font-size: 2rem;
+  }
+
+  .hero-left-bottom p {
+    font-size: 1rem;
+  }
+
+  .mobile-header {
+    display: flex;
+  }
 }
