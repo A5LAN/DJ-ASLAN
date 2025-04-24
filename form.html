@@ -95,11 +95,61 @@
       background-color: var(--accent);
       color: var(--primary);
     }
+
+    .select-container {
+      position: relative;
+      width: 100%;
+    }
+
+    .select-search {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: var(--radius);
+      font-size: 1rem;
+    }
+
+    .dropdown-list {
+      position: absolute;
+      top: 100%;
+      width: 100%;
+      background: white;
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      border-radius: var(--radius);
+      display: none;
+      box-shadow: 0 0 0 3px rgba(245, 85, 255, 0.2);
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      cursor: pointer;
+    }
+
+    .dropdown-item:hover {
+      background-color: #f0f0f0;
+    }
+
+    .country-flag {
+      width: 20px;
+      height: 15px;
+      margin-right: 10px;
+    }
+
+    .country-details {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 0.5rem;
+    }
+
   </style>
 </head>
 <body>
 
-  <form action="https://formspree.io/f/your-form-id" method="POST" class="form-card" onsubmit="return validatePhoneNumber()">
+  <form action="https://formspree.io/f/your-form-id" method="POST" class="form-card">
     <h1>Book DJ ASLAN</h1>
 
     <label for="name">Your Name</label>
@@ -109,32 +159,13 @@
     <input type="email" name="email" id="email" required>
 
     <label for="phone">Your Phone Number</label>
-    <div>
-      <select name="countryCode" id="countryCode" required>
-        <!-- Country code options ordered as per request -->
-        <option value="+1">Canada (+1)</option>
-        <option value="+52">Mexico (+52)</option>
-        <option value="+1">United States (+1)</option>
-        <option value="+44">United Kingdom (+44)</option>
-        <option value="+33">France (+33)</option>
-        <option value="+49">Germany (+49)</option>
-        <option value="+39">Italy (+39)</option>
-        <option value="+81">Japan (+81)</option>
-        <option value="+86">China (+86)</option>
-        <option value="+61">Australia (+61)</option>
-        <option value="+234">Nigeria (+234)</option>
-        <option value="+47">Norway (+47)</option>
-        <option value="+34">Spain (+34)</option>
-        <option value="+233">Ghana (+233)</option>
-        <option value="+66">Thailand (+66)</option>
-        <option value="+7">Russia (+7)</option>
-        <option value="+27">South Africa (+27)</option>
-        <option value="+55">Brazil (+55)</option>
-        <option value="+30">Greece (+30)</option>
-        <!-- Add more countries here as needed -->
-      </select>
-      <input type="tel" name="phone" id="phone" placeholder="Enter phone number" required>
+    <div class="select-container">
+      <input type="text" id="select-search" class="select-search" placeholder="Search for country" oninput="filterCountries()" autocomplete="off">
+      <div id="country-list" class="dropdown-list">
+        <!-- Country items will be dynamically inserted here -->
+      </div>
     </div>
+    <input type="tel" name="phone" id="phone" placeholder="Enter phone number" required>
 
     <label for="event">Event Type</label>
     <select name="event" id="event" required>
@@ -153,62 +184,57 @@
   </form>
 
   <script>
-    function validatePhoneNumber() {
-      const phoneInput = document.getElementById('phone');
-      const countryCode = document.getElementById('countryCode').value;
-      const phoneValue = phoneInput.value.trim();
-      const phonePattern = /^[0-9]+$/;  // Only numbers allowed
+    const countryData = [
+      { name: "Canada", code: "+1", flag: "🇨🇦", digits: "10" },
+      { name: "Mexico", code: "+52", flag: "🇲🇽", digits: "10" },
+      { name: "United States", code: "+1", flag: "🇺🇸", digits: "10" },
+      { name: "United Kingdom", code: "+44", flag: "🇬🇧", digits: "10" },
+      { name: "Australia", code: "+61", flag: "🇦🇺", digits: "9" },
+      { name: "Germany", code: "+49", flag: "🇩🇪", digits: "10" },
+      { name: "France", code: "+33", flag: "🇫🇷", digits: "9" },
+      { name: "Italy", code: "+39", flag: "🇮🇹", digits: "10" },
+      { name: "Spain", code: "+34", flag: "🇪🇸", digits: "9" },
+      { name: "Japan", code: "+81", flag: "🇯🇵", digits: "10" },
+      { name: "Turkiye", code: "+90", flag: "🇹🇷", digits: "10" },
+      // Add more countries as needed...
+    ];
 
-      if (!phoneValue.match(phonePattern)) {
-        alert('Please enter a valid phone number (digits only).');
-        return false;
-      }
+    const countryListDiv = document.getElementById("country-list");
 
-      // Add length validation for different countries here
-      switch (countryCode) {
-        case "+1":
-          if (phoneValue.length !== 10) {
-            alert('For Canada (and the United States), please enter 10 digits.');
-            return false;
-          }
-          break;
-        case "+44":
-          if (phoneValue.length !== 10) {
-            alert('For the United Kingdom, please enter 10 digits.');
-            return false;
-          }
-          break;
-        case "+33":
-          if (phoneValue.length !== 9) {
-            alert('For France, please enter 9 digits.');
-            return false;
-          }
-          break;
-        case "+90":
-          if (phoneValue.length !== 10) {
-            alert('For Turkey, please enter 10 digits.');
-            return false;
-          }
-          break;
-        case "+61":
-          if (phoneValue.length !== 9) {
-            alert('For Australia, please enter 9 digits.');
-            return false;
-          }
-          break;
-        case "+49":
-          if (phoneValue.length !== 11) {
-            alert('For Germany, please enter 11 digits.');
-            return false;
-          }
-          break;
-        // Continue adding cases for more countries as needed
-        default:
-          break;
-      }
-
-      return true;
+    function displayCountries(countries) {
+      countryListDiv.innerHTML = "";
+      countries.forEach(country => {
+        const item = document.createElement("div");
+        item.classList.add("dropdown-item");
+        item.innerHTML = `
+          <img src="https://www.countryflags.io/${country.flag}/flat/32.png" class="country-flag" />
+          ${country.name} ${country.code}
+          <div class="country-details">Required digits: ${country.digits}</div>
+        `;
+        item.onclick = () => {
+          document.getElementById("select-search").value = `${country.name} ${country.code}`;
+          countryListDiv.style.display = "none";
+        };
+        countryListDiv.appendChild(item);
+      });
     }
+
+    function filterCountries() {
+      const searchQuery = document.getElementById("select-search").value.toLowerCase();
+      const filteredCountries = countryData.filter(country => country.name.toLowerCase().includes(searchQuery));
+      displayCountries(filteredCountries);
+      countryListDiv.style.display = filteredCountries.length ? "block" : "none";
+    }
+
+    // Initialize the country list
+    displayCountries(countryData);
+
+    // Close dropdown when clicked outside
+    document.addEventListener("click", (event) => {
+      if (!event.target.closest(".select-container")) {
+        countryListDiv.style.display = "none";
+      }
+    });
   </script>
 
 </body>
