@@ -55,7 +55,7 @@
       color: #333;
     }
 
-    input, textarea {
+    input, textarea, select {
       width: 100%;
       padding: 0.85rem 1rem;
       border: 1px solid #ddd;
@@ -65,7 +65,7 @@
       transition: var(--transition);
     }
 
-    input:focus, textarea:focus {
+    input:focus, textarea:focus, select:focus {
       border-color: var(--accent);
       outline: none;
       box-shadow: 0 0 0 3px rgba(245, 85, 255, 0.2);
@@ -99,7 +99,7 @@
 </head>
 <body>
 
-  <form action="https://formspree.io/f/xpwdzgbb" method="POST" class="form-card">
+  <form action="https://formspree.io/f/your-form-id" method="POST" class="form-card" onsubmit="return validatePhoneNumber()">
     <h1>Book DJ ASLAN</h1>
 
     <label for="name">Your Name</label>
@@ -108,11 +108,69 @@
     <label for="email">Your Email</label>
     <input type="email" name="email" id="email" required>
 
+    <label for="phone">Your Phone Number</label>
+    <div>
+      <select name="countryCode" id="countryCode" required>
+        <option value="+1">United States (+1)</option>
+        <option value="+44">United Kingdom (+44)</option>
+        <option value="+33">France (+33)</option>
+        <option value="+90">Turkey (+90)</option>
+        <!-- Add more countries as needed -->
+      </select>
+      <input type="tel" name="phone" id="phone" placeholder="Enter phone number" required>
+    </div>
+
+    <label for="event">Event Type</label>
+    <select name="event" id="event" required>
+      <option value="wedding">Wedding</option>
+      <option value="birthday">Birthday Party</option>
+      <option value="anniversary">Anniversary Party</option>
+      <option value="christmas">Christmas Party</option>
+      <option value="nye">New Year's Eve</option>
+      <option value="other">Other</option>
+    </select>
+
     <label for="message">Tell me about your event</label>
     <textarea name="message" id="message" required></textarea>
 
     <button type="submit">Send Request</button>
   </form>
+
+  <script>
+    function validatePhoneNumber() {
+      const phoneInput = document.getElementById('phone');
+      const countryCode = document.getElementById('countryCode').value;
+      const phoneValue = phoneInput.value.trim();
+      const phonePattern = /^[0-9]+$/;  // Only numbers allowed
+
+      if (!phoneValue.match(phonePattern)) {
+        alert('Please enter a valid phone number (digits only).');
+        return false;
+      }
+
+      if (countryCode === "+1" && phoneValue.length !== 10) {
+        alert('For the United States, please enter 10 digits.');
+        return false;
+      }
+
+      if (countryCode === "+44" && phoneValue.length !== 10) {
+        alert('For the United Kingdom, please enter 10 digits.');
+        return false;
+      }
+
+      if (countryCode === "+33" && phoneValue.length !== 9) {
+        alert('For France, please enter 9 digits.');
+        return false;
+      }
+
+      if (countryCode === "+90" && phoneValue.length !== 10) {
+        alert('For Turkey, please enter 10 digits.');
+        return false;
+      }
+
+      return true;
+    }
+  </script>
 
 </body>
 </html>
