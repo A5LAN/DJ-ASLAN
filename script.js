@@ -16,15 +16,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Mobile menu toggle logic
-const menuToggle = document.getElementById('menuToggle');
-const mobileNav = document.getElementById('mobileNav');
+  // Mobile menu toggle logic with accessibility
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileNav = document.getElementById('mobileNav');
 
-if (menuToggle && mobileNav) {
-  menuToggle.addEventListener('click', () => {
-    mobileNav.classList.toggle('active');
-  });
-}
+  if (menuToggle && mobileNav) {
+    menuToggle.setAttribute('aria-expanded', 'false');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
 
   // Hero Slider Animation
   const slides = gsap.utils.toArray(".slide");
@@ -60,7 +63,9 @@ if (menuToggle && mobileNav) {
     showSlide(currentSlideIndex);
   }
 
-  setInterval(advanceSlide, 4000);
+  const sliderInterval = setInterval(advanceSlide, 4000);
+
+  window.addEventListener('beforeunload', () => clearInterval(sliderInterval));
 
   // Hero Content Animation
   const h1 = document.querySelector('.hero-left-top h1');
