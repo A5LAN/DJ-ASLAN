@@ -8,9 +8,6 @@ export default defineConfig({
   build: {
     outDir: 'dist',  // Ensure the output folder for the build is 'dist' (default)
     emptyOutDir: true,  // Clean the dist folder before building
-    rollupOptions: {
-      input: './public/index.html',  // Explicitly set the entry HTML file
-    },
   },
   publicDir: 'public',  // Ensure Vite uses the 'public' folder for static assets
   server: {
