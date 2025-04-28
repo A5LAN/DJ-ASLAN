@@ -1,13 +1,13 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// Set the base path for GitHub Pages deployment
+// Vite configuration for GitHub Pages deployment
 export default defineConfig({
-  plugins: [react()],
-  base: '/DJ-ASLAN/',  // Adjust base path for deployment on GitHub Pages
+  plugins: [react()],  // React plugin
+  base: '/DJ-ASLAN/',  // Set the base path to match your GitHub repository name
   build: {
-    outDir: 'dist',  // Ensure the output folder for the build is 'dist' (default)
-    emptyOutDir: true,  // Clean the dist folder before building
+    outDir: 'dist',  // Output directory for the build (default is 'dist')
+    emptyOutDir: true,  // Clean the output directory before building
     rollupOptions: {
       input: './public/index.html',  // Explicitly set the entry HTML file
     },
