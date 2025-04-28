@@ -1,8 +1,14 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// https://vitejs.dev/config/
+// Set the base path for GitHub Pages deployment
 export default defineConfig({
   plugins: [react()],
-  base: '/DJ-ASLAN/',  // This is for GitHub Pages hosting
+  base: '/DJ-ASLAN/',  // Adjust base path for deployment on GitHub Pages
+  build: {
+    outDir: 'dist', // Ensure the output folder for build is 'dist' (default)
+  },
+  server: {
+    open: true, // Automatically open the browser when the server starts
+  },
 });
