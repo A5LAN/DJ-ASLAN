@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// Replace 'your-repo-name' with your actual GitHub repository name
+// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/DJ-ASLAN/', 
+  base: '/DJ-ASLAN/',  // This is for GitHub Pages hosting
 });
