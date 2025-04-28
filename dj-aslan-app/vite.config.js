@@ -13,7 +13,4 @@ export default defineConfig({
     },
   },
   publicDir: 'public',  // Ensure Vite uses the 'public' folder for static assets
-  server: {
-    open: true,  // Automatically open the browser when the server starts
-  },
 });
