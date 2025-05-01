@@ -72,11 +72,12 @@ body {
   font-weight: 500;
 }
 
+/* Hero Section */
 .hero-container {
   display: flex;
   flex-direction: row;
   height: 100vh;
-  width: 100%;
+  width: 100vw; /* Full width of the viewport */
   overflow: hidden;
   position: relative;
 }
@@ -167,9 +168,9 @@ body {
   flex-shrink: 0;
   position: absolute;
   top: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
+  left: 100%; /* Start off-screen to the right */
+  opacity: 0; /* Initially hide the slide */
+  transition: opacity 1s ease-in-out, left 1s ease-in-out; /* Smooth transition for opacity and left */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -178,9 +179,14 @@ body {
 .slide img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover; /* Cover the area while maintaining aspect ratio */
   object-position: center;
   display: block;
+}
+
+.slide:first-child {
+  opacity: 1;
+  left: 0; /* Make the first slide visible */
 }
 
 .scroll-indicator {
