@@ -1,5 +1,6 @@
 import React from 'react';
-import 'src/assets/styles.css';
+import "../assets/styles.css";
+
 
 // Dummy projects data
 const projects = [

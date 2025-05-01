@@ -8,6 +8,8 @@ import '../assets/styles.css';
 import HeroSection from '../components/HeroSection';
 import ProjectsSection from '../components/ProjectsSection';
 import Footer from '../components/Footer';
+import "../assets/styles.css";
+
 
 gsap.registerPlugin(ScrollTrigger);
 

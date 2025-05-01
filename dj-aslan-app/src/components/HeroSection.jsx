@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import 'src/assets/styles.css';
+import "../assets/styles.css";
+
 
 
 // Import GSAP plugin
@@ -41,16 +42,16 @@ const HeroSection = () => {
       <div className="hero-right">
         <div className="slider">
           <div className="slide">
-            <img src="public/images/djing-blur.jpg" alt="DJ ASLAN in action" />
+            <img src="/images/djing-blur.jpg" alt="DJ ASLAN in action" />
           </div>
           <div className="slide">
-            <img src="public/images/djing-blur2.jpg" alt="DJ with the crowd" />
+            <img src="/images/djing-blur2.jpg" alt="DJ with the crowd" />
           </div>
           <div className="slide">
-            <img src="public/images/djing-blur3.jpg" alt="Lighting setup at event" />
+            <img src="/images/djing-blur3.jpg" alt="Lighting setup at event" />
           </div>
           <div className="slide">
-            <img src="public/images/djing-bracelet.jpg" alt="DJ bracelet and gear" />
+            <img src="/images/djing-bracelet.jpg" alt="DJ bracelet and gear" />
           </div>
         </div>
       </div>
