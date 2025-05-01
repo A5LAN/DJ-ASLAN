@@ -1,14 +1,16 @@
-// src/App.jsx
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Booking from './pages/booking';  // Import from src/pages/booking.jsx
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Booking from './pages/Booking';  // Correct path to the Booking component
+import Home from './pages/Home';      // Correct path to the Home component
 
 function App() {
   return (
-    <Router>
+    <Router>  {/* Removed the basename */}
+    {/* Routing */}
       <Routes>
-        <Route path="/" element={<h1>Home Page</h1>} />
-        <Route path="/booking" element={<Booking />} />  {/* Routing to booking.jsx */}
+        <Route path="/" element={<Home />} /> {/* Root path for Home */}
+        <Route path="/Booking" element={<Booking />} /> {/* Path for Booking */}
+        {/* 404 Route */}
+        <Route path="*" element={<h2>Page Not Found</h2>} />
       </Routes>
     </Router>
   );
