@@ -2,14 +2,12 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import '../assets/styles.css';
 
 // Import components
 import HeroSection from '../components/HeroSection';
 import ProjectsSection from '../components/ProjectsSection';
 import Footer from '../components/Footer';
-import "../assets/styles.css";
-
+import "../public/assets/styles.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,7 +26,8 @@ function Home() {
 
   return (
     <>
-      <header className="mobile-header">
+      {/* Existing Mobile Header */}
+      <header className="mobile-header md:hidden">
         <div className="mobile-logo">DJ ASLAN</div>
         <div className="mobile-menu-toggle" id="menuToggle">
           <span></span><span></span><span></span>
@@ -41,7 +40,7 @@ function Home() {
         </nav>
       </header>
 
-      <main>
+      <main className="pt-20">
         {/* Hero Section */}
         <HeroSection />
 
@@ -51,7 +50,6 @@ function Home() {
 
         {/* Projects Section */}
         <ProjectsSection />
-
       </main>
 
       {/* Footer Section */}

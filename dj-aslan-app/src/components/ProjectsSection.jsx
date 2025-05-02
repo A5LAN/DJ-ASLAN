@@ -1,5 +1,5 @@
 import React from 'react';
-import "../assets/styles.css";
+import "../public/assets/styles.css";
 
 
 // Dummy projects data

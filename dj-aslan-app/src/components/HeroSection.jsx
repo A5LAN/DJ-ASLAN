@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import '../assets/styles.css';
+import '../public/assets/styles.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,7 +12,7 @@ const HeroSection = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Scroll-triggered fade-ups
+      // Fade-up animation for all sections
       gsap.utils.toArray('section').forEach((section) => {
         gsap.from(section, {
           scrollTrigger: {
@@ -27,7 +27,7 @@ const HeroSection = () => {
         });
       });
 
-      // Hero content animations
+      // Hero content entrance animations
       gsap.from('.hero-left-top h1', {
         x: -100,
         opacity: 0,
@@ -55,12 +55,21 @@ const HeroSection = () => {
         }
       );
 
-      // Slider animation
+      // Slider logic
       const slides = gsap.utils.toArray('.slide');
       let currentSlideIndex = 0;
 
+      // Initial state
       gsap.set(slides, { opacity: 0 });
-      gsap.set(slides[0], { x: '100%', opacity: 1 }); // Start the first image from the right
+      gsap.set(slides[0], { x: '100%', opacity: 1 });
+
+      // First transition with slide-in effect
+      gsap.to(slides[0], {
+        x: '0%',
+        opacity: 1,
+        duration: 1.2,
+        ease: 'power2.out',
+      });
 
       let isFirstTransition = true;
 
@@ -69,36 +78,28 @@ const HeroSection = () => {
         const current = slides[index];
 
         if (isFirstTransition) {
-          gsap.to(prev, {
-            x: '-100%',
-            opacity: 0,
-            duration: 0.6,
-            ease: 'power2.inOut',
-          });
-          gsap.fromTo(
-            current,
-            { x: '100%', opacity: 0 },
-            {
-              x: '0%',
-              opacity: 1,
-              duration: 1.2,
-              ease: 'power2.out',
-            }
-          );
-          isFirstTransition = false;
-        } else {
-          gsap.to(prev, {
-            opacity: 0,
-            duration: 1.4,
-            ease: 'power1.out',
-          });
-          gsap.to(current, {
-            opacity: 1,
-            duration: 1.4,
-            ease: 'power1.out',
-          });
-        }
-      }
+         isFirstTransition = false;
+          return;
+       }
+
+        // Animate out previous slide
+       gsap.to(prev, {
+       opacity: 0,
+       duration: 1.2,
+       ease: 'power1.out',
+      });
+
+      // Set the incoming slide's position offscreen to the right
+      gsap.set(current, { x: '100%' });
+
+      // Animate in the new slide with slide-in + fade-in
+      gsap.to(current, {
+        x: '0%',
+        opacity: 1,
+        duration: 1.2,
+        ease: 'power2.out',
+      });
+    }
 
       const interval = setInterval(() => {
         currentSlideIndex = (currentSlideIndex + 1) % slides.length;
@@ -135,28 +136,28 @@ const HeroSection = () => {
           <div className="slide-track" ref={slideRef}>
             <div className="slide">
               <img
-                src="../src/assets/images/djing-blur.jpg"
+                src="../images/djing-blur.jpg"
                 alt="DJ ASLAN in action"
                 loading="lazy"
               />
             </div>
             <div className="slide">
               <img
-                src="../src/assets/images/djing-blur2.jpg"
+                src="../images/djing-blur2.jpg"
                 alt="DJ with the crowd"
                 loading="lazy"
               />
             </div>
             <div className="slide">
               <img
-                src="../src/assets/images/djing-blur3.jpg"
+                src="../images/djing-blur3.jpg"
                 alt="Lighting setup at event"
                 loading="lazy"
               />
             </div>
             <div className="slide">
               <img
-                src="../src/assets/images/djing-bracelet.jpg"
+                src="../images/djing-bracelet.jpg"
                 alt="DJ bracelet and gear"
                 loading="lazy"
               />
