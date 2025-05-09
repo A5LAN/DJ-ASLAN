@@ -29,7 +29,7 @@ export default function BookingForm() {
     }
 
     try {
-      const response = await fetch('https://formspree.io/f/your-form-id', {
+      const response = await fetch('https://formspree.io/f/xpwdzgbb', {
         method: 'POST',
         body: formData,
       });
@@ -76,7 +76,7 @@ export default function BookingForm() {
             country={'ca'}
             value={phone}
             onChange={setPhone}
-            enableSearch={true}
+            enableSearch={false} // Disabling the search functionality
             onlyCountries={['ca', 'mx', 'us', 'gb', 'ae', 'ar', 'at', 'au', 'bd', 'be', 'br', 'cn', 'fr', 'de', 'in', 'jp', 'tr']}
             preferredCountries={['ca', 'mx', 'us', 'gb']}
             inputProps={{
@@ -86,16 +86,20 @@ export default function BookingForm() {
             inputStyle={{
               width: '100%',
               borderRadius: '18px',
-              paddingLeft: '48px',
+              paddingLeft: '48px', // Adjust this padding if necessary
               height: '44px',
               fontSize: '16px',
+              paddingRight: '10px', // No extra padding on the right
             }}
             buttonStyle={{
               borderTopLeftRadius: '18px',
               borderBottomLeftRadius: '18px',
-              left: '10px',
+              left: '0', // Ensure the flag is flush with the input
             }}
-            dropdownStyle={{ zIndex: 9999 }}
+            dropdownStyle={{ 
+              zIndex: 9999,
+              marginLeft: '-10px', // Adjust horizontal margin if necessary
+            }}
             countryCodeEditable={false}
             disabled={isSubmitting}
           />

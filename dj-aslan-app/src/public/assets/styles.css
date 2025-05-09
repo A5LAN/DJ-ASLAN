@@ -266,7 +266,9 @@ h1, h2, h3 {
     text-align: center;
   }
 
+  /* Center the "Book Now" and header for mobile */
   .hero-left-top h1 {
+    text-align: center; /* Center the header text on mobile */
     font-size: 2rem;
   }
 
@@ -283,14 +285,26 @@ h1, h2, h3 {
     padding: 4rem 1rem;
   }
 
+  /* Center projects section for mobile */
   .projects {
-    flex-direction: column;
-    gap: 1rem;
+    display: flex;
+    gap: 1.5rem; /* Reduced gap between projects */
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 4rem 0;
+    margin-top: 2rem; /* Optional, to give some space above */
   }
 
   .project {
     width: 100%;
-    max-width: 400px;
+    max-width: 300px; /* Adjusted max-width for mobile */
+    margin: 1rem; /* Add margin for spacing */
+  }
+
+  /* Center "Book Now" button on mobile */
+  .book-button {
+    margin: 2rem auto; /* Center the button on mobile */
+    display: block;
   }
 }
 

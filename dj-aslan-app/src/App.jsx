@@ -1,15 +1,13 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Booking from './pages/Booking';  // Correct path to the Booking component
-import Home from './pages/Home';      // Correct path to the Home component
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Booking from './pages/Booking';
+import Home from './pages/Home';
 
 function App() {
   return (
-    <Router>  {/* Removed the basename */}
-    {/* Routing */}
+    <Router basename="/DJ-ASLAN/">{/* GitHub Pages subdirectory */}
       <Routes>
-        <Route path="/" element={<Home />} /> {/* Root path for Home */}
-        <Route path="/Booking" element={<Booking />} /> {/* Path for Booking */}
-        {/* 404 Route */}
+        <Route path="/" element={<Home />} />
+        <Route path="/Booking" element={<Booking />} />
         <Route path="*" element={<h2>Page Not Found</h2>} />
       </Routes>
     </Router>

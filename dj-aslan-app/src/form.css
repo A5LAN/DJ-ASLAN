@@ -2,7 +2,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif; /* This ensures the body text uses the 'Inter' font */
   background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
   display: flex;
   align-items: center;
@@ -32,12 +32,14 @@ h1 {
   font-size: 1.75rem;
   text-align: center;
   margin-bottom: 1.5rem;
+  font-family: 'Inter', sans-serif; /* Ensures 'Inter' font is used for h1 */
 }
 
 label {
   display: block;
   margin: 1.2rem 0 0.5rem;
   font-weight: 500;
+  font-family: 'Inter', sans-serif; /* Same font family for labels */
 }
 
 input, select, textarea {
@@ -47,6 +49,9 @@ input, select, textarea {
   border-radius: 18px;
   font-size: 1rem;
   background: white;
+  color: #111;
+  font-family: 'Inter', sans-serif; /* Ensures 'Inter' font is used for inputs */
+  font-weight: 600; /* Increase the font weight for bolder text */
   transition: border-color 0.2s ease;
 }
 

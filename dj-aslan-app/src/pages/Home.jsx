@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
@@ -12,6 +12,25 @@ import "../public/assets/styles.css";
 gsap.registerPlugin(ScrollTrigger);
 
 function Home() {
+  const [menuOpen, setMenuOpen] = useState(false); // State to track the menu's visibility
+
+  // Toggle the menu when the hamburger icon is clicked
+  const toggleMenu = () => {
+    setMenuOpen(prevState => !prevState); // Toggle between open and closed
+  };
+
+  // Smooth scroll functionality
+  const handleScroll = (event, targetId) => {
+    event.preventDefault(); // Prevent default anchor link behavior
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   useEffect(() => {
     gsap.to('.hero-left', {
       scrollTrigger: {
@@ -29,11 +48,15 @@ function Home() {
       {/* Existing Mobile Header */}
       <header className="mobile-header md:hidden">
         <div className="mobile-logo">DJ ASLAN</div>
-        <div className="mobile-menu-toggle" id="menuToggle">
+        <div className="mobile-menu-toggle" id="menuToggle" onClick={toggleMenu}>
           <span></span><span></span><span></span>
         </div>
-        <nav className="mobile-nav" id="mobileNav">
-          <a href="#projects">Projects</a>
+        <nav className={`mobile-nav ${menuOpen ? 'active' : ''}`} id="mobileNav">
+          <a href="#home" onClick={(e) => handleScroll(e, 'home')}>Home</a>
+          <a href="#form" onClick={(e) => handleScroll(e, 'form')}>Form</a>
+          <a href="#mixes" onClick={(e) => handleScroll(e, 'mixes')}>Mixes</a>
+          <a href="#gallery" onClick={(e) => handleScroll(e, 'gallery')}>Gallery</a>
+          <a href="#projects" onClick={(e) => handleScroll(e, 'projects')}>Projects</a>
           <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
           <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <Link to="/Contact">Contact</Link>
@@ -45,7 +68,7 @@ function Home() {
         <HeroSection />
 
         <div className="scroll-indicator">
-          <a href="#projects">Scroll ↓</a>
+          <a href="#projects" onClick={(e) => handleScroll(e, 'projects')}>Scroll ↓</a>
         </div>
 
         {/* Projects Section */}

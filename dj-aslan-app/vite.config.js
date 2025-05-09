@@ -9,7 +9,7 @@ export default defineConfig({
     port: 5174,  // Ensure port is the same as you're trying to access
     strictPort: true,  // Prevent Vite from picking another port if 5174 is in use
   },
-  base: '/', // Ensure this is set to the root path
+  base: process.env.NODE_ENV === 'production' ? '/DJ-ASLAN/' : '/', // Set to your repository name
   build: {
     outDir: 'dist', // Output folder after build
   },

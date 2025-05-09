@@ -136,28 +136,28 @@ const HeroSection = () => {
           <div className="slide-track" ref={slideRef}>
             <div className="slide">
               <img
-                src="../images/djing-blur.jpg"
+                src="/DJ-ASLAN/images/djing-blur.jpg"
                 alt="DJ ASLAN in action"
                 loading="lazy"
               />
             </div>
             <div className="slide">
               <img
-                src="../images/djing-blur2.jpg"
+                src="/DJ-ASLAN/images/djing-blur2.jpg"
                 alt="DJ with the crowd"
                 loading="lazy"
               />
             </div>
             <div className="slide">
               <img
-                src="../images/djing-blur3.jpg"
+                src="/DJ-ASLAN/images/djing-blur3.jpg"
                 alt="Lighting setup at event"
                 loading="lazy"
               />
             </div>
             <div className="slide">
               <img
-                src="../images/djing-bracelet.jpg"
+                src="/DJ-ASLAN/images/djing-bracelet.jpg"
                 alt="DJ bracelet and gear"
                 loading="lazy"
               />
