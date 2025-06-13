@@ -8,13 +8,13 @@ const Footer = () => {
     <footer>
       <div style={{ maxWidth: '700px', margin: '0 auto 2rem', fontSize: '1rem', color: '#333', textAlign: 'center' }}>
         <p>
-          A professional DJ for special events and restaurants ready to create an unforgettable experience.
+          Professional DJ services for special events and venues, crafting unforgettable experiences every time.
         </p>
         <p>&copy; 2025 Okan Dodanli. All rights reserved.</p>
         <p>
-          <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a> |{' '}
-          <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a> |{' '}
-          <Link to="/Contact">Contact</Link>
+          <a href="https://www.instagram.com/_djaslan/" target="_blank" rel="noopener noreferrer">Instagram</a> |{' '}
+          <a href="https://www.mixcloud.com/aslangroup/" target="_blank" rel="noopener noreferrer">MixCloud</a> |{' '}
+          <a href="https://linktr.ee/aslangroup" target="_blank" rel="noopener noreferrer">Contact</a> |{' '}
         </p>
       </div>
     </footer>

@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 const HeroSection = () => {
   const heroRef = useRef(null);
   const slideRef = useRef(null);
+  const scrollArrowRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -59,11 +60,8 @@ const HeroSection = () => {
       const slides = gsap.utils.toArray('.slide');
       let currentSlideIndex = 0;
 
-      // Initial state
       gsap.set(slides, { opacity: 0 });
       gsap.set(slides[0], { x: '100%', opacity: 1 });
-
-      // First transition with slide-in effect
       gsap.to(slides[0], {
         x: '0%',
         opacity: 1,
@@ -78,35 +76,46 @@ const HeroSection = () => {
         const current = slides[index];
 
         if (isFirstTransition) {
-         isFirstTransition = false;
+          isFirstTransition = false;
           return;
-       }
+        }
 
-        // Animate out previous slide
-       gsap.to(prev, {
-       opacity: 0,
-       duration: 1.2,
-       ease: 'power1.out',
-      });
+        gsap.to(prev, {
+          opacity: 0,
+          duration: 1.2,
+          ease: 'power1.out',
+        });
 
-      // Set the incoming slide's position offscreen to the right
-      gsap.set(current, { x: '100%' });
+        gsap.set(current, { x: '100%' });
 
-      // Animate in the new slide with slide-in + fade-in
-      gsap.to(current, {
-        x: '0%',
-        opacity: 1,
-        duration: 1.2,
-        ease: 'power2.out',
-      });
-    }
+        gsap.to(current, {
+          x: '0%',
+          opacity: 1,
+          duration: 1.2,
+          ease: 'power2.out',
+        });
+      }
 
       const interval = setInterval(() => {
         currentSlideIndex = (currentSlideIndex + 1) % slides.length;
         showSlide(currentSlideIndex);
       }, 4000);
 
-      return () => clearInterval(interval);
+      // Scroll arrow click smooth scroll
+      if (scrollArrowRef.current) {
+        scrollArrowRef.current.addEventListener('click', (e) => {
+          e.preventDefault();
+          // Native smooth scroll
+          document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+
+      return () => {
+        clearInterval(interval);
+        if (scrollArrowRef.current) {
+          scrollArrowRef.current.removeEventListener('click', () => {});
+        }
+      };
     }, heroRef);
 
     return () => ctx.revert();
@@ -121,8 +130,7 @@ const HeroSection = () => {
           </div>
           <div className="hero-left-bottom">
             <p>
-              A professional DJ for special events and restaurants ready to
-              create an unforgettable experience.
+              Aslan Group is a top DJ and event entertainment company in Toronto, specializing in weddings, private parties, corporate events, and AV solutions. We deliver high-energy experiences with pro DJs, lighting, karaoke, and equipment rentals. From luxury weddings to milestone celebrations, we bring unforgettable vibes to every event. Serving the GTA and beyond. Book now!
             </p>
             <Link to="/Booking" className="book-button">
               Book Now
@@ -165,6 +173,16 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+
+      {/* Scroll Down Arrow */}
+      <a
+        href="#projects"
+        ref={scrollArrowRef}
+        className="scroll-indicator"
+        aria-label="Scroll to projects section"
+      >
+        Scroll ↓
+      </a>
     </section>
   );
 };

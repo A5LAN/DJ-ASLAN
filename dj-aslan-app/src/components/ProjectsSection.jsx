@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
@@ -19,36 +19,47 @@ const projects = [
     title: 'Weddings',
     description: 'Capturing timeless moments.',
     video: '/videos/wedding.mp4',
-    link: '/weddings-gallery',
+    link: '/Booking', //will get updated to /weddings-gallery
   },
   {
     title: 'Restaurants',
     description: 'Setting the vibe at top dining locations.',
     isSlider: true,
-    link: '/restaurants-gallery',
+    link: '/Booking', //will get updated to /restaurants-gallery
   },
   {
     title: 'Night Clubs',
     description: 'Spinning at vibrant nightlife venues.',
     video: '/videos/night-club.mp4',
-    link: '/night-clubs-gallery',
+    link: '/Booking', //will get updated to /night-clubs-gallery
   },
   {
     title: 'Special Events',
     description: 'Making moments unforgettable.',
     image: '/images/special-event.jpg',
-    link: '/special-events-gallery',
+    link: '/Booking/', //will get updated to special-events-gallery
   },
   {
     title: 'Concerts / Raves',
     description: 'Bringing energy to massive crowds.',
     image: '/images/rave.jpg',
-    link: '/concerts-raves-gallery',
+    link: '/Booking', //will get updated to /concerts-raves-gallery
   },
 ];
 
 const ProjectsSection = () => {
   const sliderRef = useRef(null);
+  const videoRefs = useRef([]);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Detect if mobile on mount
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     let ctx;
@@ -84,6 +95,19 @@ const ProjectsSection = () => {
       }, sliderRef);
     }
 
+    // Try to play videos programmatically
+    videoRefs.current.forEach((video) => {
+      if (video) {
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            video.muted = true;
+            video.play().catch(() => {});
+          });
+        }
+      }
+    });
+
     return () => ctx && ctx.revert();
   }, []);
 
@@ -111,14 +135,24 @@ const ProjectsSection = () => {
                 </div>
               </div>
             ) : project.video ? (
-              <video
-                src={project.video}
-                className="project-image"
-                autoPlay
-                loop
-                muted
-                playsInline
-              />
+              // Replace Night Clubs video with image on mobile only
+              project.title === 'Night Clubs' && isMobile ? (
+                <img
+                  src="/images/the-zoo.png"
+                  alt={project.title}
+                  className="project-image"
+                />
+              ) : (
+                <video
+                  ref={(el) => (videoRefs.current[index] = el)}
+                  src={project.video}
+                  className="project-image"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
+              )
             ) : (
               <img
                 src={project.image}

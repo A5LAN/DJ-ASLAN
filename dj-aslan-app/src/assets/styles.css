@@ -175,7 +175,7 @@ h1, h2, h3 {
   height: 100%;
   position: absolute;
   top: 0;
-  left: 0; /* instead of left: 100% */
+  left: 0;
   opacity: 0;
   display: flex;
   justify-content: center;
@@ -197,9 +197,9 @@ h1, h2, h3 {
 }
 
 .hero-right img {
-  transform: none; /* Remove the translation */
-  opacity: 1; /* Ensure the image is fully opaque */
-  transition: none; /* Remove the transition */
+  transform: none;
+  opacity: 1;
+  transition: none;
 }
 
 /* Scroll Indicator */
@@ -208,10 +208,19 @@ h1, h2, h3 {
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 0.875rem;
+  font-size: 0.875rem; /* ~14px */
   opacity: 0.6;
   animation: bounce 2s infinite;
-  color: #111;
+  color: var(--text-color);
+  cursor: pointer;
+  user-select: none;
+  z-index: 1001; /* Above other elements */
+  text-decoration: none;
+}
+
+.scroll-indicator:hover {
+  opacity: 1;
+  color: var(--accent-color);
 }
 
 @keyframes bounce {
@@ -266,9 +275,8 @@ h1, h2, h3 {
     text-align: center;
   }
 
-  /* Center the "Book Now" and header for mobile */
   .hero-left-top h1 {
-    text-align: center; /* Center the header text on mobile */
+    text-align: center;
     font-size: 2rem;
   }
 
@@ -285,25 +293,23 @@ h1, h2, h3 {
     padding: 4rem 1rem;
   }
 
-  /* Center projects section for mobile */
   .projects {
     display: flex;
-    gap: 1.5rem; /* Reduced gap between projects */
+    gap: 1.5rem;
     flex-wrap: wrap;
     justify-content: center;
     padding: 4rem 0;
-    margin-top: 2rem; /* Optional, to give some space above */
+    margin-top: 2rem;
   }
 
   .project {
     width: 100%;
-    max-width: 300px; /* Adjusted max-width for mobile */
-    margin: 1rem; /* Add margin for spacing */
+    max-width: 300px;
+    margin: 1rem;
   }
 
-  /* Center "Book Now" button on mobile */
   .book-button {
-    margin: 2rem auto; /* Center the button on mobile */
+    margin: 2rem auto;
     display: block;
   }
 }
@@ -342,15 +348,27 @@ section, .section {
   transform: translateY(-10px);
 }
 
+/* ✅ Updated project-media for better video handling */
 .project-media {
   width: 100%;
-  height: 200px;
+  aspect-ratio: 16 / 9;
+  height: auto;
   overflow: hidden;
   border-radius: 12px;
   margin-bottom: 1rem;
 }
 
-.project-image{
+/* ✅ Add styling specifically for video */
+video.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+
+/* Optional: apply same styling to image if needed */
+img.project-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -377,10 +395,4 @@ a {
   color: #000;
   text-decoration: none;
   margin: 0 0.5rem;
-}
-
-a:hover {
-  color: #ba03d9;
-  opacity: 1;
-  font-weight: 600;
 }
