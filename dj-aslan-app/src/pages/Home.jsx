@@ -7,7 +7,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import HeroSection from '../components/HeroSection';
 import ProjectsSection from '../components/ProjectsSection';
 import Footer from '../components/Footer';
-import "../public/assets/styles.css";
+import "../assets/styles.css";
 
 gsap.registerPlugin(ScrollTrigger);
 

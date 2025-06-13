@@ -374,12 +374,13 @@ footer a {
 }
 
 a {
-  color: var(--text-color);
+  color: #000;
   text-decoration: none;
   margin: 0 0.5rem;
 }
 
 a:hover {
+  color: #ba03d9;
   opacity: 1;
   font-weight: 600;
 }

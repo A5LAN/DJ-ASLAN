@@ -2,23 +2,23 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import '../public/assets/styles.css';
+import '../assets/styles.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const restaurantImages = [
-  '/DJ-ASLAN/images/chef-hall.jpg',
-  '/DJ-ASLAN/images/jacks.jpg',
-  '/DJ-ASLAN/images/jacks-eaton.jpg',
-  '/DJ-ASLAN/images/jacks-vaughan.jpg',
-  '/DJ-ASLAN/images/pub-on-king.jpg',
+  '/images/chef-hall.jpg',
+  '/images/jacks.jpg',
+  '/images/jacks-eaton.jpg',
+  '/images/jacks-vaughan.jpg',
+  '/images/pub-on-king.jpg',
 ];
 
 const projects = [
   {
     title: 'Weddings',
     description: 'Capturing timeless moments.',
-    video: '/DJ-ASLAN/videos/wedding.mp4',
+    video: '/videos/wedding.mp4',
     link: '/weddings-gallery',
   },
   {
@@ -30,19 +30,19 @@ const projects = [
   {
     title: 'Night Clubs',
     description: 'Spinning at vibrant nightlife venues.',
-    video: '/DJ-ASLAN/videos/night-club.mp4',
+    video: '/videos/night-club.mp4',
     link: '/night-clubs-gallery',
   },
   {
     title: 'Special Events',
-    description: 'Making special moments unforgettable.',
-    image: '/DJ-ASLAN/images/special-event.jpg',
+    description: 'Making moments unforgettable.',
+    image: '/images/special-event.jpg',
     link: '/special-events-gallery',
   },
   {
     title: 'Concerts / Raves',
     description: 'Bringing energy to massive crowds.',
-    image: '/DJ-ASLAN/images/rave.jpg',
+    image: '/images/rave.jpg',
     link: '/concerts-raves-gallery',
   },
 ];

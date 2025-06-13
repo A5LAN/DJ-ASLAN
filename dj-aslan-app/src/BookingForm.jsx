@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
-import './form.css'; // Optional external CSS for styling
+import './form.css';
 
 export default function BookingForm() {
   const [phone, setPhone] = useState('');
-  const [formSubmitted, setFormSubmitted] = useState(false); // Track form submission
-  const [isSubmitting, setIsSubmitting] = useState(false); // Track submitting state
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [email, setEmail] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
-    event.preventDefault(); // Prevent default form submission behavior
+    event.preventDefault();
     setIsSubmitting(true);
-
     const formData = new FormData(event.target);
 
-    // Simple client-side validation (you can expand these)
     if (!email.includes('@')) {
       alert('Please enter a valid email.');
       setIsSubmitting(false);
@@ -31,12 +31,15 @@ export default function BookingForm() {
     try {
       const response = await fetch('https://formspree.io/f/xpwdzgbb', {
         method: 'POST',
+        headers: { 'Accept': 'application/json' },
         body: formData,
       });
 
       if (response.ok) {
-        setFormSubmitted(true); // Show confirmation message
+        setFormSubmitted(true);
       } else {
+        const result = await response.json();
+        console.error('Formspree error:', result);
         alert('Oops! Something went wrong. Please try again.');
       }
     } catch (error) {
@@ -50,22 +53,18 @@ export default function BookingForm() {
   return (
     <div className="form-wrapper">
       {!formSubmitted ? (
-        <form
-          onSubmit={handleSubmit}
-          method="POST"
-          className="form-card"
-        >
-          <h1>Book DJ ASLAN</h1>
+        <form onSubmit={handleSubmit} method="POST" className="form-card">
+          <h1>Book the ASLAN Group</h1>
 
           <label htmlFor="name">Your Name</label>
           <input type="text" name="name" id="name" required disabled={isSubmitting} />
 
           <label htmlFor="email">Your Email</label>
-          <input 
-            type="email" 
-            name="email" 
-            id="email" 
-            required 
+          <input
+            type="email"
+            name="email"
+            id="email"
+            required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             disabled={isSubmitting}
@@ -76,7 +75,7 @@ export default function BookingForm() {
             country={'ca'}
             value={phone}
             onChange={setPhone}
-            enableSearch={false} // Disabling the search functionality
+            enableSearch={false}
             onlyCountries={['ca', 'mx', 'us', 'gb', 'ae', 'ar', 'at', 'au', 'bd', 'be', 'br', 'cn', 'fr', 'de', 'in', 'jp', 'tr']}
             preferredCountries={['ca', 'mx', 'us', 'gb']}
             inputProps={{
@@ -86,19 +85,19 @@ export default function BookingForm() {
             inputStyle={{
               width: '100%',
               borderRadius: '18px',
-              paddingLeft: '48px', // Adjust this padding if necessary
+              paddingLeft: '48px',
               height: '44px',
               fontSize: '16px',
-              paddingRight: '10px', // No extra padding on the right
+              paddingRight: '10px',
             }}
             buttonStyle={{
               borderTopLeftRadius: '18px',
               borderBottomLeftRadius: '18px',
-              left: '0', // Ensure the flag is flush with the input
+              left: '0',
             }}
-            dropdownStyle={{ 
+            dropdownStyle={{
               zIndex: 9999,
-              marginLeft: '-10px', // Adjust horizontal margin if necessary
+              marginLeft: '-10px',
             }}
             countryCodeEditable={false}
             disabled={isSubmitting}
@@ -123,8 +122,17 @@ export default function BookingForm() {
         </form>
       ) : (
         <div className="confirmation-message">
-          <h2>Thank you for booking with DJ ASLAN!</h2>
+          <h2>Thank you for booking with the ASLAN Group!</h2>
           <p>Your booking request has been successfully submitted. We'll get back to you soon!</p>
+
+          <button className="btn-home" onClick={() => navigate('/')}>
+            <img
+              src="/images/Aslan-Logo-blur-black.png"
+              alt="Return to Home"
+              className="btn-home-logo"
+            />
+            <span>Return to Home</span>
+          </button>
         </div>
       )}
     </div>

@@ -2,7 +2,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', sans-serif; /* This ensures the body text uses the 'Inter' font */
+  font-family: 'Inter', sans-serif;
   background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
   display: flex;
   align-items: center;
@@ -32,14 +32,14 @@ h1 {
   font-size: 1.75rem;
   text-align: center;
   margin-bottom: 1.5rem;
-  font-family: 'Inter', sans-serif; /* Ensures 'Inter' font is used for h1 */
+  font-family: 'Inter', sans-serif;
 }
 
 label {
   display: block;
   margin: 1.2rem 0 0.5rem;
   font-weight: 500;
-  font-family: 'Inter', sans-serif; /* Same font family for labels */
+  font-family: 'Inter', sans-serif;
 }
 
 input, select, textarea {
@@ -50,8 +50,8 @@ input, select, textarea {
   font-size: 1rem;
   background: white;
   color: #111;
-  font-family: 'Inter', sans-serif; /* Ensures 'Inter' font is used for inputs */
-  font-weight: 600; /* Increase the font weight for bolder text */
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
   transition: border-color 0.2s ease;
 }
 
@@ -113,6 +113,36 @@ button:disabled {
   font-size: 1.1rem;
   color: #333;
 }
+
+/* Return to Home button under confirmation */
+.btn-home {
+  margin-top: 1.5rem;
+  padding: 0.9rem 2rem;
+  border-radius: 18px;
+  background-color: #111;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-home:hover {
+  background-color: #f5f5f5;
+  color: #111;
+}
+
+.btn-home-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
 
 /* Mobile responsiveness */
 @media (max-width: 600px) {
