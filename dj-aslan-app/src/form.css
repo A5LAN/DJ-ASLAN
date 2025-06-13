@@ -17,6 +17,16 @@ body {
   width: 100%;
 }
 
+/* FORCE dark text color inside the form */
+.form-card,
+.form-card label,
+.form-card input,
+.form-card select,
+.form-card textarea,
+.form-card button {
+  color: #111 !important;
+}
+
 .form-card {
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
@@ -62,6 +72,29 @@ input:focus, select:focus, textarea:focus {
 
 textarea {
   resize: vertical;
+}
+
+/* react-phone-input-2 overrides */
+.react-tel-input .form-control {
+  color: #111 !important;
+  background: white !important;
+  border-color: #ddd !important;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  border-radius: 18px !important;
+  padding-left: 48px !important;
+  height: 44px !important;
+  font-size: 1rem !important;
+}
+
+.react-tel-input .flag-dropdown {
+  border-top-left-radius: 18px !important;
+  border-bottom-left-radius: 18px !important;
+}
+
+/* react-phone-input-2 dropdown z-index to show above other elements */
+.react-tel-input .country-list {
+  z-index: 9999 !important;
 }
 
 button {
@@ -142,7 +175,6 @@ button:disabled {
   height: 24px;
   object-fit: contain;
 }
-
 
 /* Mobile responsiveness */
 @media (max-width: 600px) {
