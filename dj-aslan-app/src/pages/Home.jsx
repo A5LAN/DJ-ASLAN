@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
@@ -13,6 +13,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 function Home() {
   const [menuOpen, setMenuOpen] = useState(false); // State to track the menu's visibility
+  const location = useLocation();
+  const navigate = useNavigate();
 
   // Toggle the menu when the hamburger icon is clicked
   const toggleMenu = () => {
@@ -29,6 +31,16 @@ function Home() {
         behavior: 'smooth',
       });
     }
+  };
+
+  // Handle Home button click
+  const handleHomeClick = () => {
+    if (location.pathname === '/') {
+      window.location.reload();
+    } else {
+      navigate('/');
+    }
+    setMenuOpen(false); // close menu on navigation
   };
 
   useEffect(() => {
@@ -52,14 +64,25 @@ function Home() {
           <span></span><span></span><span></span>
         </div>
         <nav className={`mobile-nav ${menuOpen ? 'active' : ''}`} id="mobileNav">
-          <a href="#home" onClick={(e) => handleScroll(e, 'home')}>Home</a>
-          <a href="#form" onClick={(e) => handleScroll(e, 'form')}>Form</a>
-          <a href="#mixes" onClick={(e) => handleScroll(e, 'mixes')}>Mixes</a>
-          <a href="#gallery" onClick={(e) => handleScroll(e, 'gallery')}>Gallery</a>
-          <a href="#projects" onClick={(e) => handleScroll(e, 'projects')}>Projects</a>
-          <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <Link to="/Contact">Contact</Link>
+          <Link
+            to="/"
+            onClick={(e) => {
+              setMenuOpen(false);
+              if (window.location.pathname === '/') {
+                e.preventDefault(); // prevent React Router navigation
+                window.location.reload(); // full page reload
+              }
+            }}
+          >
+            Home
+          </Link>
+          <Link to="/Booking" onClick={() => setMenuOpen(false)}>Book Now</Link>
+          {/*<a href="#mixes" onClick={(e) => handleScroll(e, 'mixes')}>Mixes</a> */}
+          {/*<a href="#gallery" onClick={(e) => handleScroll(e, 'gallery')}>Gallery</a> */}
+          {/*<a href="#projects" onClick={(e) => handleScroll(e, 'projects')}>Projects</a> */}
+          <a href="https://www.instagram.com/_djaslan/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://www.mixcloud.com/aslangroup/" target="_blank" rel="noopener noreferrer">MixCloud</a>
+          <a href="https://linktr.ee/aslangroup" target="_blank" rel="noopener noreferrer">Contact</a>
         </nav>
       </header>
 

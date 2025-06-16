@@ -19,31 +19,31 @@ const projects = [
     title: 'Weddings',
     description: 'Capturing timeless moments.',
     video: '/videos/wedding.mp4',
-    link: '/Booking', //will get updated to /weddings-gallery
+    link: '/Booking', // will get updated to /weddings-gallery
   },
   {
     title: 'Restaurants',
     description: 'Setting the vibe at top dining locations.',
     isSlider: true,
-    link: '/Booking', //will get updated to /restaurants-gallery
+    link: '/Booking', // will get updated to /restaurants-gallery
   },
   {
     title: 'Night Clubs',
     description: 'Spinning at vibrant nightlife venues.',
     video: '/videos/night-club.mp4',
-    link: '/Booking', //will get updated to /night-clubs-gallery
+    link: '/Booking', // will get updated to /night-clubs-gallery
   },
   {
     title: 'Special Events',
     description: 'Making moments unforgettable.',
     image: '/images/special-event.jpg',
-    link: '/Booking/', //will get updated to special-events-gallery
+    link: '/Booking/', // will get updated to special-events-gallery
   },
   {
     title: 'Concerts / Raves',
     description: 'Bringing energy to massive crowds.',
     image: '/images/rave.jpg',
-    link: '/Booking', //will get updated to /concerts-raves-gallery
+    link: '/Booking', // will get updated to /concerts-raves-gallery
   },
 ];
 
@@ -151,6 +151,7 @@ const ProjectsSection = () => {
                   loop
                   muted
                   playsInline
+                  disableRemotePlayback // 👈 This disables Chromecast
                 />
               )
             ) : (
