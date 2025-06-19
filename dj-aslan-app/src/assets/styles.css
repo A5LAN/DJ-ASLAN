@@ -405,6 +405,9 @@ footer {
   background: #fff;
   font-size: 0.9rem;
   color: #666;
+  align-self: stretch;   /* if inside a flex container */
+  width: 100%;           /* safe fallback */
+  max-width: 100vw;      /* just in case there's a max-width inherited */
 }
 
 footer a {

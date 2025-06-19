@@ -1,21 +1,24 @@
 import React from 'react';
-import MobileNavBar from '../components/MobileNavBar'; // Adjust path as needed
+import MobileNavBar from '../components/MobileNavBar';
+import Footer from '../components/Footer';
 import '../assets/contactcards.css';
 
 export default function ContactCards() {
   return (
     <>
       <MobileNavBar />
+
+      {/* Contact section only contains contact content now */}
       <section className="contact-cards-section">
         <h2 className="contact-cards-title">We’d love to hear from you</h2>
         <p className="contact-cards-subtitle">
           Whether you’re curious about our packages, a mix, or scheduling – we’re ready to answer any and all questions.
         </p>
 
-        {/* Smaller "Request a Mix" button */}
-        <button type="button" className="small turquoise">
-          Request a Mix
-        </button>
+        {/* "Request a Mix" button */}
+        <a href="mailto:mixes@aslangroup.ca">
+          <button type="button" className="small turquoise">Request a Mix</button>
+        </a>
 
         <div className="contact-cards-container">
           <div className="contact-card sales">
@@ -24,7 +27,9 @@ export default function ContactCards() {
               <p>
                 Wondering if ASLAN GROUP is the right entertainment for your event? Chat with our team to see if there’s a fit.
               </p>
-              <button className="pink">Let's Chat</button>
+              <a href="mailto:sales@aslangroup.ca">
+                <button type="button" className="pink">Let's Chat</button>
+              </a>
               <img className="static-img" src="/images/sale.png" alt="Sales Visual" />
             </div>
           </div>
@@ -35,7 +40,9 @@ export default function ContactCards() {
               <p>
                 Need a hand logging in to update your event form? Let’s get you connected with your support team.
               </p>
-              <button className="turquoise">Get Support</button>
+              <a href="mailto:support@aslangroup.ca">
+                <button type="button" className="turquoise">Get Support</button>
+              </a>
               <img className="static-img" src="/images/support.png" alt="Support Visual" />
             </div>
           </div>
@@ -46,12 +53,17 @@ export default function ContactCards() {
               <p>
                 We’re into co-marketing with awesome brands. Drop us a note and our Partnerships team will circle back.
               </p>
-              <button className="pink">Get In Touch</button>
+              <a href="mailto:partnership@aslangroup.ca">
+                <button type="button" className="pink">Get In Touch</button>
+              </a>
               <img className="static-img" src="/images/partnership.png" alt="Partnership Visual" />
             </div>
           </div>
         </div>
       </section>
+
+      
+      <Footer />
     </>
   );
 }
