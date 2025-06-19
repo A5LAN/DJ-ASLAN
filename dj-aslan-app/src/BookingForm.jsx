@@ -54,7 +54,7 @@ export default function BookingForm() {
     <div className="form-wrapper">
       {!formSubmitted ? (
         <form onSubmit={handleSubmit} method="POST" className="form-card">
-          <h1>Book the ASLAN Group</h1>
+          <h1>Book the<br /> ASLAN GROUP</h1>
 
           <label htmlFor="name">Your Name</label>
           <input type="text" name="name" id="name" required disabled={isSubmitting} />
@@ -116,7 +116,11 @@ export default function BookingForm() {
           <label htmlFor="message">Tell me about your event</label>
           <textarea name="message" id="message" required disabled={isSubmitting}></textarea>
 
-          <button type="submit" disabled={isSubmitting} className={isSubmitting ? 'btn-disabled' : 'btn-submit'}>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className={isSubmitting ? 'btn-disabled' : 'btn-submit'}
+          >
             {isSubmitting ? 'Sending...' : 'Send Request'}
           </button>
         </form>

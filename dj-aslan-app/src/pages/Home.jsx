@@ -1,104 +1,48 @@
-import { useEffect, useState } from 'react';
-import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
-// Import components
+import MobileNavBar from '../components/MobileNavBar';
 import HeroSection from '../components/HeroSection';
 import ProjectsSection from '../components/ProjectsSection';
 import Footer from '../components/Footer';
+
 import "../assets/styles.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function Home() {
-  const [menuOpen, setMenuOpen] = useState(false); // State to track the menu's visibility
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Toggle the menu when the hamburger icon is clicked
-  const toggleMenu = () => {
-    setMenuOpen(prevState => !prevState); // Toggle between open and closed
-  };
+  // Add 'home' class to <body> on mount, remove on unmount
+  useEffect(() => {
+    document.body.classList.add('home');
+    document.body.style.background = '';
+    document.body.style.backgroundAttachment = '';
 
-  // Smooth scroll functionality
-  const handleScroll = (event, targetId) => {
-    event.preventDefault(); // Prevent default anchor link behavior
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      window.scrollTo({
-        top: targetElement.offsetTop,
-        behavior: 'smooth',
-      });
-    }
-  };
+    return () => {
+      document.body.classList.remove('home');
+    };
+  }, []);
 
-  // Handle Home button click
+  // Handle Home link click from MobileNavBar (reload if on home)
   const handleHomeClick = () => {
     if (location.pathname === '/') {
       window.location.reload();
     } else {
       navigate('/');
     }
-    setMenuOpen(false); // close menu on navigation
   };
-
-  useEffect(() => {
-    gsap.to('.hero-left', {
-      scrollTrigger: {
-        trigger: '.hero-left',
-        start: 'top center',
-      },
-      x: 0,
-      opacity: 1,
-      duration: 1,
-    });
-  }, []);
 
   return (
     <>
-      {/* Existing Mobile Header */}
-      <header className="mobile-header md:hidden">
-        <div className="mobile-logo">DJ ASLAN</div>
-        <div className="mobile-menu-toggle" id="menuToggle" onClick={toggleMenu}>
-          <span></span><span></span><span></span>
-        </div>
-        <nav className={`mobile-nav ${menuOpen ? 'active' : ''}`} id="mobileNav">
-          <Link
-            to="/"
-            onClick={(e) => {
-              setMenuOpen(false);
-              if (window.location.pathname === '/') {
-                e.preventDefault(); // prevent React Router navigation
-                window.location.reload(); // full page reload
-              }
-            }}
-          >
-            Home
-          </Link>
-          <Link to="/Booking" onClick={() => setMenuOpen(false)}>Book Now</Link>
-          {/*<a href="#mixes" onClick={(e) => handleScroll(e, 'mixes')}>Mixes</a> */}
-          {/*<a href="#gallery" onClick={(e) => handleScroll(e, 'gallery')}>Gallery</a> */}
-          {/*<a href="#projects" onClick={(e) => handleScroll(e, 'projects')}>Projects</a> */}
-          <a href="https://www.instagram.com/_djaslan/" target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a href="https://www.mixcloud.com/aslangroup/" target="_blank" rel="noopener noreferrer">MixCloud</a>
-          <a href="https://linktr.ee/aslangroup" target="_blank" rel="noopener noreferrer">Contact</a>
-        </nav>
-      </header>
-
+      <MobileNavBar onHomeClick={handleHomeClick} />
       <main className="pt-20">
-        {/* Hero Section */}
         <HeroSection />
-
-        <div className="scroll-indicator">
-          <a href="#projects" onClick={(e) => handleScroll(e, 'projects')}>Scroll ↓</a>
-        </div>
-
-        {/* Projects Section */}
         <ProjectsSection />
       </main>
-
-      {/* Footer Section */}
       <Footer />
     </>
   );

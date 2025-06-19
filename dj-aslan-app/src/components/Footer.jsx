@@ -14,7 +14,7 @@ const Footer = () => {
         <p>
           <a href="https://www.instagram.com/_djaslan/" target="_blank" rel="noopener noreferrer">Instagram</a> |{' '}
           <a href="https://www.mixcloud.com/aslangroup/" target="_blank" rel="noopener noreferrer">MixCloud</a> |{' '}
-          <a href="https://linktr.ee/aslangroup" target="_blank" rel="noopener noreferrer">Contact</a> |{' '}
+          <Link to="/contact" target="_blank" rel="noopener noreferrer">Contact</Link>
         </p>
       </div>
     </footer>

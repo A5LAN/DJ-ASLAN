@@ -1,6 +1,6 @@
 :root {
   --bg-color: #ffffff;
-  --text-color: #111;
+  --text-color: #292827;
   --accent-color: #ccc;
   --font-main: 'Inter', sans-serif;
   --font-weight-light: 300;
@@ -19,6 +19,7 @@
 }
 
 body {
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
   background-color: var(--bg-color);
   color: var(--text-color);
   font-family: var(--font-main);
@@ -27,6 +28,10 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  height: auto;
+  overflow-y: auto;
+  /* Padding added for fixed mobile header */
+  padding-top: 0;
 }
 
 h1, h2, h3 {
@@ -46,6 +51,7 @@ h1, h2, h3 {
   width: 100%;
   z-index: 999;
   border-bottom: 1px solid #eee;
+  height: 60px;
 }
 
 .mobile-logo {
@@ -58,12 +64,13 @@ h1, h2, h3 {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  padding: 10px; /* bigger tap area */
 }
 
 .mobile-menu-toggle span {
   width: 25px;
   height: 3px;
-  background-color: #111;
+  background-color: #292827;
   display: block;
 }
 
@@ -77,6 +84,7 @@ h1, h2, h3 {
   background-color: #fff;
   padding: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 998;
 }
 
 .mobile-nav.active {
@@ -84,9 +92,9 @@ h1, h2, h3 {
 }
 
 .mobile-nav a {
-  padding: 0.75rem;
+  padding: 1rem 0.75rem;
   text-decoration: none;
-  color: #111;
+  color: #292827;
   font-weight: var(--font-weight-normal);
 }
 
@@ -132,7 +140,7 @@ h1, h2, h3 {
   font-size: clamp(2rem, 6vw, 4rem);
   font-weight: var(--font-weight-bold);
   margin-bottom: 1rem;
-  color: #333;
+  color: #292827;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
@@ -220,7 +228,7 @@ h1, h2, h3 {
 
 .scroll-indicator:hover {
   opacity: 1;
-  color: var(--accent-color);
+  color:#40e0d0;
 }
 
 @keyframes bounce {
@@ -238,10 +246,10 @@ h1, h2, h3 {
   width: fit-content;
   padding: 1rem 2rem;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
   color: #f5f;
-  background-color: #111;
+  background-color: #292827;
   border: 1px solid #fff;
   border-radius: 50px;
   letter-spacing: 0.05em;
@@ -251,7 +259,7 @@ h1, h2, h3 {
 
 .book-button:hover {
   background-color: #f5f;
-  color: #111;
+  color: #292827;
   opacity: 1;
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -259,6 +267,10 @@ h1, h2, h3 {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  body {
+    padding-top: 60px; /* prevent fixed header overlap */
+  }
+
   .hero-container {
     flex-direction: column;
     height: auto;
@@ -286,6 +298,14 @@ h1, h2, h3 {
 
   .mobile-header {
     display: flex;
+  }
+
+  .mobile-menu-toggle {
+    padding: 10px; /* bigger tap area */
+  }
+
+  .mobile-nav a {
+    padding: 1rem 0.75rem;
   }
 
   .section {
@@ -341,14 +361,16 @@ section, .section {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 250px;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease-in-out;
 }
 
 .project:hover {
   transform: translateY(-10px);
+  background-color: #292827;
+  color: #fff;
 }
 
-/* ✅ Updated project-media for better video handling */
+/* Updated project-media for better video handling */
 .project-media {
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -358,7 +380,7 @@ section, .section {
   margin-bottom: 1rem;
 }
 
-/* ✅ Add styling specifically for video */
+/* Add styling specifically for video */
 video.project-image {
   width: 100%;
   height: 100%;
@@ -367,7 +389,7 @@ video.project-image {
   border-radius: 12px;
 }
 
-/* Optional: apply same styling to image if needed */
+/* Same styling to images */
 img.project-image {
   width: 100%;
   height: 100%;
@@ -387,12 +409,15 @@ footer {
 
 footer a {
   text-decoration: none;
-  color: #111;
+  color: #292827;
   margin: 0 0.5rem;
+}
+
+a:hover {
+  color: #40E0D0;
 }
 
 a {
   color: #000;
   text-decoration: none;
-  margin: 0 0.5rem;
 }
