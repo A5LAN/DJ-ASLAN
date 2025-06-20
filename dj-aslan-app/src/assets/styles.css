@@ -100,9 +100,10 @@ h1, h2, h3 {
 
 /* Hero Section */
 .hero-container {
+  padding: 0rem 0rem 4.5rem 0rem;
   display: flex;
   flex-direction: row;
-  height: 100vh;
+  height: 95vh;
   width: 100vw;
   overflow: hidden;
   position: relative;
@@ -401,7 +402,7 @@ img.project-image {
 /* Footer */
 footer {
   text-align: center;
-  padding: 3rem 2rem;
+  padding: 2rem 2rem 0.1rem 1.5rem;
   background: #fff;
   font-size: 0.9rem;
   color: #666;

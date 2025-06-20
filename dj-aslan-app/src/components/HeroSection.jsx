@@ -132,9 +132,9 @@ const HeroSection = () => {
             <p>
               Aslan Group is a top DJ and event entertainment company in Toronto, specializing in weddings, private parties, corporate events, and AV solutions. We deliver high-energy experiences with pro DJs, lighting, karaoke, and equipment rentals. From luxury weddings to milestone celebrations, we bring unforgettable vibes to every event. Serving the GTA and beyond. Book now!
             </p>
-            <Link to="/Booking" className="book-button">
+            <a href="/Booking" target="_blank" rel="noopener noreferrer" className="book-button">
               Book Now
-            </Link>
+            </a>
           </div>
         </div>
       </div>

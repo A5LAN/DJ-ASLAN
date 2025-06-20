@@ -32,9 +32,9 @@ body.contact {
 /* Section styles */
 .contact-cards-section {
   /* Added 60px for fixed navbar height */
-  padding-top: calc(4rem + 60px);
+  padding-top: 0rem;
   padding-right: 2rem;
-  padding-bottom: 17rem;
+  padding-bottom: 3rem;
   padding-left: 2rem;
   text-align: center;
 }
@@ -208,7 +208,7 @@ button.small {
 /* Footer */
 footer {
   text-align: center;
-  padding: 3rem 2rem;
+  padding: 2rem 2rem 0.1rem 1.5rem;
   background: #fff;
   font-size: 0.9rem;
   color: #666;

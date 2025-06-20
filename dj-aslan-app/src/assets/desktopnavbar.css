@@ -1,0 +1,46 @@
+/* === Main Navigation Wrapper === */
+#mainNavigation {
+  width: 100%;
+}
+
+/* === Navigation Bar Layout === */
+.nav-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Navigation links aligned horizontally */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 3rem;              /* Space between nav items */
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  opacity: 0.5;
+  color: #292827;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  transition: color 0.3s ease, text-shadow 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #292827;
+  opacity: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Slightly stronger shadow for hover */
+}
+
+/* === Responsive: Hide navbar on small screens === */
+@media (max-width: 768px) {
+  #mainNavigation {
+    display: none;
+  }
+}

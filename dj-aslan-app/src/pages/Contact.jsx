@@ -1,12 +1,15 @@
 import React from 'react';
+import DesktopNavbar from '../components/DesktopNavbar';   // Import DesktopNavbar
 import MobileNavBar from '../components/MobileNavBar';
 import Footer from '../components/Footer';
 import '../assets/contactcards.css';
+import '../assets/DesktopNavbar.css';  // Import desktop navbar CSS
 
 export default function ContactCards() {
   return (
     <>
-      <MobileNavBar />
+      <DesktopNavbar />     {/* Desktop nav, visible md+ */}
+      <MobileNavBar />      {/* Mobile nav, visible below md */}
 
       {/* Contact section only contains contact content now */}
       <section className="contact-cards-section">
@@ -62,7 +65,6 @@ export default function ContactCards() {
         </div>
       </section>
 
-      
       <Footer />
     </>
   );
